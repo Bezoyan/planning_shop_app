@@ -5,8 +5,9 @@ import 'package:planning_shop_app/models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
+  final Function deleteTx;
 
-  TransactionList(this.transactions);
+  TransactionList(this.transactions, this.deleteTx);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +17,7 @@ class TransactionList extends StatelessWidget {
               children: <Widget>[
                 Text(
                   'No transactions added yet!',
-                  style: Theme.of(context).textTheme.title,
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
                 SizedBox(
                   height: 20,
@@ -49,10 +50,15 @@ class TransactionList extends StatelessWidget {
                     ),
                     title: Text(
                       transactions[index].title,
-                      style: Theme.of(context).textTheme.title,
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                     subtitle: Text(
                       DateFormat.yMMMd().format(transactions[index].date),
+                    ),
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete),
+                      color: Theme.of(context).errorColor,
+                      onPressed: () => deleteTx(transactions[index].id),
                     ),
                   ),
                 );
