@@ -67,7 +67,7 @@ class _NewTransactionState extends State<NewTransaction> {
               onSubmitted: (_) => _submitData,
             ),
             Container(
-              height: 70,
+              height: 60,
               child: Row(
                 children: <Widget>[
                   Expanded(
